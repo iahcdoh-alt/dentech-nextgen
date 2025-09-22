@@ -3,11 +3,9 @@ node_modules
 .next
 out
 
-
 # OS
 .DS_Store
 Thumbs.db
-
 
 # Misc
 .env

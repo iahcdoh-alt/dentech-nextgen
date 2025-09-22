@@ -5,9 +5,7 @@ export const runtime = 'edge'
 async function readBody(req: NextRequest): Promise<Record<string, any>> {
   const ct = req.headers.get('content-type') || ''
   try {
-    if (ct.includes('application/json')) {
-      return await req.json()
-    }
+    if (ct.includes('application/json')) return await req.json()
     if (ct.includes('application/x-www-form-urlencoded') || ct.includes('multipart/form-data')) {
       const form = await req.formData()
       const obj: Record<string, any> = {}
@@ -46,6 +44,5 @@ export async function POST(req: NextRequest) {
     body: JSON.stringify(payload)
   })
 
-  const ok = resp.ok
-  return NextResponse.json({ ok })
+  return NextResponse.json({ ok: resp.ok })
 }
